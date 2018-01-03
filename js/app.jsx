@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Input from './components/inputcomponent.jsx';
 import RecipesList from './components/allrecipes.jsx';
+import RandomRecipeMethod from './components/randomrecipemethod.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -58,15 +59,20 @@ class App extends React.Component {
     console.log(this.state.data);
     return this.state.isData ? (
       <div>
-        <Input
-          text={this.state.text}
-          send={this.getState}
-          request={this.getData}/>
-        <RecipesList
-          data={this.state.data}
-          page={this.state.page}
-          prev={this.prevPage}
-          next={this.nextPage}/>
+        <div>
+          <Input
+            text={this.state.text}
+            send={this.getState}
+            request={this.getData}/>
+            <RecipesList
+              data={this.state.data}
+              page={this.state.page}
+              prev={this.prevPage}
+              next={this.nextPage}/>
+        </div>
+        <div>
+          <RandomRecipeMethod/>
+        </div>
       </div>
     ) : (
       <div>
