@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Input from './components/inputcomponent.jsx';
+import RecipesList from './components/allrecipes.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class App extends React.Component {
     this.getData();
   }
   //fetch api
-  getData(){
+  getData = () => {
     fetch(`http://www.recipepuppy.com/api/?p=${this.state.page}&q=${this.state.text}`).then(response=>{
       if(response&&response.ok){
         return response.json();
@@ -31,13 +32,25 @@ class App extends React.Component {
     })
   }
 
-  request = () => {
-    this.getData()
-  }
 
   //callback get
   getState = (text) => {
     this.setState({ text: text })
+  }
+
+  //next and prev page
+
+  nextPage = () => {
+    this.setState( {page: this.state.page + 1},
+    () => {
+      this.getData();
+    })
+  }
+  prevPage = () => {
+    this.setState( {page: this.state.page - 1},
+    () => {
+      this.getData();
+    })
   }
 
   render() {
@@ -48,7 +61,12 @@ class App extends React.Component {
         <Input
           text={this.state.text}
           send={this.getState}
-          request={this.request}/>
+          request={this.getData}/>
+        <RecipesList
+          data={this.state.data}
+          page={this.state.page}
+          prev={this.prevPage}
+          next={this.nextPage}/>
       </div>
     ) : (
       <div>

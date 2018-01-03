@@ -18,8 +18,8 @@ class Input extends React.Component {
   }
 
   // init api search on btn
-  request = (e) => {
-    e.preventDefault();
+  request = (event) => {
+    event.preventDefault();
     this.props.request();
   }
 
