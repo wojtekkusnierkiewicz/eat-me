@@ -1,18 +1,17 @@
 {
-  "name": "Wojtek Kusnierkiewicz",
+  "name": "eat-me",
   "version": "1.0.0",
-  "description": "Where to go app",
+  "description": "eat-me",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "node_modules/.bin/webpack"
   },
-  "author": "",
+  "author": "Wojtek Kusnierkiewicz",
   "license": "ISC",
   "dependencies": {
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
-    "react-router": "^3.2.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
