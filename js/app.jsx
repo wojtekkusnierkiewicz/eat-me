@@ -53,12 +53,15 @@ class App extends React.Component {
       this.getData();
     })
   }
+  // hideMethod = () => {
+  //   this.setState({display:block})
+  // }
 
   render() {
     console.log(this.state.text);
     console.log(this.state.data);
     return this.state.isData ? (
-      <div>
+      <div className='appContainer'>
         <div>
           <Input
             text={this.state.text}
@@ -68,7 +71,8 @@ class App extends React.Component {
               data={this.state.data}
               page={this.state.page}
               prev={this.prevPage}
-              next={this.nextPage}/>
+              next={this.nextPage}
+              hide={this.hideMethod}/>
         </div>
         <div>
           <RandomRecipeMethod/>
