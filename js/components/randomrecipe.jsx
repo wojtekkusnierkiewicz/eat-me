@@ -4,7 +4,7 @@ const RandomRecipe = (props) => {
   const data = props.state.data[props.state.index];
   const image = props.state.data[props.state.index].thumbnail;
   return (
-    <div>
+    <div className = 'randomRecipe'>
       <img
         src={(image !== '') ? image : `./images/default-meal.jpeg`}
         alt='meal-photo'/>

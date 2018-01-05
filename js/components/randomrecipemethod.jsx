@@ -23,16 +23,15 @@ class RandomRecipeMethod extends React.Component {
     }).then(data => {
       this.setState({
         isData: true,
-        data: data.results
+        data: data.results,
+        page: Number(Math.floor(Math.random()*(100-1+1)+1)),
+        index: Number(Math.floor(Math.random()*(9-1+1)+1))
       })
     })
   }
 
-  luckySearch = () => {
-    this.setState({
-      page: Number(Math.floor(Math.random()*(100-1+1)+1)),
-      index: Number(Math.floor(Math.random()*(9-1+1)+1))
-    });
+  luckySearch = (e) => {
+    e.preventDefault();
     this.getData();
   }
 

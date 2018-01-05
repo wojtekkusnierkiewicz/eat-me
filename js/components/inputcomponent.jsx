@@ -25,7 +25,7 @@ class Input extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='inputComponent'>
         <form>
           <input type='text' id='searchInput' placeholder='just type and search' value={this.state.text} onChange={this.textChange}/>
           <button onClick={this.request}>Search</button>

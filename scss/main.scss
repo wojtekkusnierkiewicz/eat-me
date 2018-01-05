@@ -1,7 +1,32 @@
 // classlist
 // appContainer
+// inputComponent
+// recipeContainer
+// recipesBtns
+// recipeList
+// mainSection
+// randomSection
+// randomRecipe
+$font: 'Encode Sans Expanded', sans-serif;
+$color: #18AFAF;
+
+img {
+  width: 100px;
+  height: 100px;
+}
  .appContainer {
-   background-color: yellow;
-   height: 1000px;
-   width: 1000px;
+   background-color: $color;
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+   justify-content: flex-start;
+ }
+ .mainSection {
+   flex-grow: 3;
+ }
+ .randomSection {
+   flex-grow: 1;
+   background: green;
+   min-width: 400px;
+   min-height: 300px;
  }

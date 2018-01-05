@@ -62,19 +62,19 @@ class App extends React.Component {
     console.log(this.state.data);
     return this.state.isData ? (
       <div className='appContainer'>
-        <div>
+        <div className='mainSection'>
           <Input
             text={this.state.text}
             send={this.getState}
             request={this.getData}/>
-            <RecipesList
-              data={this.state.data}
-              page={this.state.page}
-              prev={this.prevPage}
-              next={this.nextPage}
-              hide={this.hideMethod}/>
+          <RecipesList
+            data={this.state.data}
+            page={this.state.page}
+            prev={this.prevPage}
+            next={this.nextPage}
+            hide={this.hideMethod}/>
         </div>
-        <div>
+        <div className='randomSection'>
           <RandomRecipeMethod/>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SingleRecipe from './singlerecipe.jsx';
 
 const RecipesList = (props) => {
-  
+
   const goToPrev = () => {
     if (typeof props.prev === 'function') {
       props.prev();
@@ -19,11 +19,11 @@ const RecipesList = (props) => {
   const nextBtn = props.page <= 100 && <button onClick={goToNext}>next</button>
 
   return (
-    <div>
-      <div>
+    <div className='recipeContainer'>
+      <div className='recipesBtns'>
         {prevBtn} <span>Page:{props.page}</span> {nextBtn}
       </div>
-      <ul>
+      <ul className='recipeList'>
         {
           props.data.map( (value, index) => {
             return (
@@ -35,7 +35,7 @@ const RecipesList = (props) => {
           })
         }
       </ul>
-      <div>
+      <div className='recipesBtns'>
         {prevBtn} <span>Page:{props.page}</span> {nextBtn}
       </div>
     </div>
