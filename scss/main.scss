@@ -9,24 +9,114 @@
 // randomRecipe
 $font: 'Encode Sans Expanded', sans-serif;
 $color: #18AFAF;
-
+* {
+  margin: 0;
+  padding: 0;
+}
 img {
   width: 100px;
   height: 100px;
+  border-radius: 50%;
+}
+
+.buttons {
+  background:$color;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 10px;
+  font-family: $font;
+}
+
+.inputComponent{
+  grid-area: head;
+  background: yellow;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  form {
+    input{
+      text-align: center;
+    }
+    input, button{
+      width: 200px;
+      margin: 10px;
+      justify-self: center;
+      font-family: $font;
+    }
+  }
+}
+.mainSection {
+  grid-area: main;
+  background: green;
+  .recipeContainer{
+    .recipesBtns{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 10px 20px;
+      // button {
+      //   background:$color;
+      //   color: white;
+      //   border-radius: 10px;
+      // }
+      button, span {
+        padding: 5px 10px;
+        margin: 10px;
+      }
+      span {
+        font-family: $font;
+        color: white;
+        font-weight: bolder;
+      }
+    }
+    ul {
+      background: red;
+      list-style: none;
+      display:grid;
+      grid: repeat(5, 300px) / 1fr 1fr;
+      padding:10px 20px;
+      li {
+        background: brown;
+        padding: 10px 20px;
+        margin: 10px 10px;
+        img {
+          display: block;
+          margin: 5px auto;
+        }
+        p, a {
+          padding: 5px 10px;
+          font-family: $font;
+          color: white;
+          font-size: 10px;
+          text-align: center;
+        }
+        a {
+          display: block;
+          margin-bottom: 10px;
+          height: 50px;
+          font-size: 16px;
+          text-decoration: none;
+          color: $color;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+}
+.randomSection {
+  grid-area: sidebar;
+  background: pink;
 }
  .appContainer {
    background-color: $color;
-   display: flex;
-   flex-direction: row;
-   align-items: flex-start;
-   justify-content: flex-start;
- }
- .mainSection {
-   flex-grow: 3;
- }
- .randomSection {
-   flex-grow: 1;
-   background: green;
-   min-width: 400px;
-   min-height: 300px;
+   width: 1200px;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: 50px 50px 600px 50px 400px 50px;
+   grid-template-rows: 100px 400px auto;
+   grid-template-areas:
+     ". . head head head ."
+     ". . main . sidebar ."
+     ". . main . . ."
  }

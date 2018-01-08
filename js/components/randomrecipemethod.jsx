@@ -44,7 +44,7 @@ class RandomRecipeMethod extends React.Component {
         luckySearch={this.luckySearch}/>
     ) : (
       <div>
-        <button onClick={this.luckySearch}>lucky</button>
+        <button  className='buttons' onClick={this.luckySearch}>lucky</button>
       </div>
     )
   }

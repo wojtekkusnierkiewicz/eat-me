@@ -18,7 +18,7 @@ const RandomRecipe = (props) => {
         <br/>
         so if u're alergic to it, try another query
       </p>
-      <button onClick={props.luckySearch}>Search again</button>
+      <button  className='buttons' onClick={props.luckySearch}>Search again</button>
     </div>
   )
 }

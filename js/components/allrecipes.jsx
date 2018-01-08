@@ -15,8 +15,8 @@ const RecipesList = (props) => {
     }
   }
 
-  const prevBtn = props.page > 1 && <button onClick={goToPrev}>prev</button>
-  const nextBtn = props.page <= 100 && <button onClick={goToNext}>next</button>
+  const prevBtn = props.page > 1 && <button className='buttons' onClick={goToPrev}>prev</button>
+  const nextBtn = props.page <= 100 && <button className='buttons' onClick={goToNext}>next</button>
 
   return (
     <div className='recipeContainer'>

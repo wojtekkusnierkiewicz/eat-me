@@ -62,11 +62,11 @@ class App extends React.Component {
     console.log(this.state.data);
     return this.state.isData ? (
       <div className='appContainer'>
+        <Input
+          text={this.state.text}
+          send={this.getState}
+          request={this.getData}/>
         <div className='mainSection'>
-          <Input
-            text={this.state.text}
-            send={this.getState}
-            request={this.getData}/>
           <RecipesList
             data={this.state.data}
             page={this.state.page}
