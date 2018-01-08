@@ -12,6 +12,8 @@ $color: #18AFAF;
 * {
   margin: 0;
   padding: 0;
+  border-radius: 5px;
+  font-family: $font;
 }
 img {
   width: 100px;
@@ -30,7 +32,8 @@ img {
 
 .inputComponent{
   grid-area: head;
-  background: yellow;
+  margin-top: 10px;
+  background: lighten(yellow, 20%);
   display: grid;
   align-content: center;
   justify-content: center;
@@ -40,21 +43,74 @@ img {
     }
     input, button{
       width: 200px;
-      margin: 10px;
-      justify-self: center;
+      align-self: stretch;
+      justify-self: stretch;
       font-family: $font;
     }
   }
 }
+.about{
+  display:grid;
+  grid: auto/ 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  p,h4{
+    text-align: center;
+    color: white;
+    line-height: 2rem;
+  }
+  span {
+    color: $color;
+    font-weight: bolder;
+  }
+  h4{
+    align-self: center;
+  }
+  ul {
+    background: lighten(gray, 30%);
+    margin: 10px;
+    list-style: none;
+    display: grid;
+    align-items: end;
+    justify-items: center;
+    li {
+      margin: 10px;
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 75px;
+        height: 75px;
+      }
+      a {
+        font-size: 12px;
+        margin-left: 2px;
+        text-align: center;
+      }
+    }
+  }
+}
+.error {
+  display: grid;
+  h3 {
+    align-self: center;
+    justify-self: center;
+    color: white;
+    font-family: $font;
+    font-weight: bold;
+  }
+}
 .mainSection {
   grid-area: main;
-  background: green;
+  background: lighten(gray, 20%);
+  margin: 10px 0;
   .recipeContainer{
     .recipesBtns{
+      background: lighten(gray, 30%);
       display: flex;
       flex-direction: row;
       justify-content: center;
       padding: 10px 20px;
+      margin: 20px 30px 10px 30px;
       // button {
       //   background:$color;
       //   color: white;
@@ -71,13 +127,13 @@ img {
       }
     }
     ul {
-      background: red;
+      background: lighten(gray, 20%);
       list-style: none;
       display:grid;
       grid: repeat(5, 300px) / 1fr 1fr;
       padding:10px 20px;
       li {
-        background: brown;
+        background: lighten(gray, 30%);
         padding: 10px 20px;
         margin: 10px 10px;
         img {
@@ -87,7 +143,7 @@ img {
         p, a {
           padding: 5px 10px;
           font-family: $font;
-          color: white;
+          color: black;
           font-size: 10px;
           text-align: center;
         }
@@ -105,12 +161,46 @@ img {
   }
 }
 .randomSection {
+  margin: 10px 0;
   grid-area: sidebar;
-  background: pink;
+  background: lighten(gray, 20%);
+  display: grid;
+  align-content: center;
+  .randomRecipe {
+    background: lighten(gray, 30%);
+  }
+  .randomLanding, .randomRecipe {
+    margin: 20px 20px;
+    display: grid;
+    button, h2, img {
+      align-self: center;
+      justify-self: center;
+      margin: 10px;
+    }
+    h2 {
+      font-family: $font;
+      font-size: 20px;
+      color: $color;
+      text-align: center;
+    }
+    p {
+      margin: 10px;
+      text-align: center;
+      a {
+        margin: 10px;
+        text-decoration: none;
+        font-family: $font;
+        color: white;
+        font-weight: bolder;
+        padding: 10px 20px;
+      }
+    }
+  }
 }
  .appContainer {
    background-color: $color;
    width: 1200px;
+   min-height: 500px;
    margin: 0 auto;
    display: grid;
    grid-template-columns: 50px 50px 600px 50px 400px 50px;
