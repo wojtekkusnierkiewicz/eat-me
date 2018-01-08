@@ -14,7 +14,7 @@ class App extends React.Component {
       text: '',
       page: 1
     };
-    this.getData();
+    // this.getData();
   }
   //fetch api
   getData = () => {
@@ -35,8 +35,11 @@ class App extends React.Component {
 
 
   //callback get
-  getState = (text) => {
-    this.setState({ text: text })
+  getState = (text, page) => {
+    this.setState({
+      text: text,
+      page: page
+     })
   }
 
   //next and prev page
@@ -56,11 +59,12 @@ class App extends React.Component {
   // hideMethod = () => {
   //   this.setState({display:block})
   // }
-
   render() {
     console.log(this.state.text);
     console.log(this.state.data);
-    return this.state.isData ? (
+    if (this.state.isData === true && this.state.data.length>=1) {
+    return (
+
       <div className='appContainer'>
         <Input
           text={this.state.text}
@@ -69,20 +73,44 @@ class App extends React.Component {
         <div className='mainSection'>
           <RecipesList
             data={this.state.data}
-            page={this.state.page}
             prev={this.prevPage}
-            next={this.nextPage}
-            hide={this.hideMethod}/>
+            page={this.state.page}
+            next={this.nextPage}/>
         </div>
         <div className='randomSection'>
           <RandomRecipeMethod/>
         </div>
       </div>
-    ) : (
-      <div>
-        <img src='./images/source.gif' alt='prosze czekac'/>
+    )
+  } else if (this.state.isData === true && this.state.data.length===0){
+    return (
+      <div className='appContainer'>
+        <Input
+          text={this.state.text}
+          send={this.getState}
+          request={this.getData}
+        />
+        <div className='mainSection error'>
+          <h3>this is not a proper query, try again</h3>
+        </div>
+        <div className='randomSection'>
+            <RandomRecipeMethod/>
+        </div>
       </div>
     )
+  } else {
+    return (
+      <div className='appContainer'>
+        <Input
+          text={this.state.text}
+          send={this.getState}
+          request={this.getData}/>
+        <div className='randomSection'>
+            <RandomRecipeMethod/>
+        </div>
+      </div>
+    )
+  }
   }
 }
 

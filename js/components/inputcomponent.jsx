@@ -4,16 +4,18 @@ class Input extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: this.props.text
+      text: this.props.text,
+      page:''
     };
   }
 
   //getting value from input and sending it to App component in callback
   textChange = (event) => {
     this.setState({
-      text: event.target.value
+      text: event.target.value,
+      page: 1
     }, () => {
-      this.props.send(this.state.text)
+      this.props.send(this.state.text, this.state.page)
     });
   }
 

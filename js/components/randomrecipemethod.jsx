@@ -43,7 +43,8 @@ class RandomRecipeMethod extends React.Component {
         state={this.state}
         luckySearch={this.luckySearch}/>
     ) : (
-      <div>
+      <div className = 'randomLanding'>
+        <h2>If you have no idea what to cook, try our lucky search</h2>
         <button  className='buttons' onClick={this.luckySearch}>lucky</button>
       </div>
     )
