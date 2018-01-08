@@ -105,8 +105,18 @@ class App extends React.Component {
           text={this.state.text}
           send={this.getState}
           request={this.getData}/>
+        <div className='mainSection about'>
+          <h4>App created in <span>React</span> using free API by<br/>  <span>Wojtek Kuśnierkiewicz</span></h4>
+          <div>
+            <ul>
+              <li> <img src="./images/git.svg"/><a href='https://github.com/wojtekkusnierkiewicz/' target='_blank'>GITHUB</a> </li>
+              <li> <img src="./images/gmail.png"/><a href='#'>wojtek.kusnierkiewicz@gmail.com</a> </li>
+              <li> <img src="./images/ln.png"/><a href='#'>LINKEDIN</a> </li>
+            </ul>
+          </div>
+        </div>
         <div className='randomSection'>
-            <RandomRecipeMethod/>
+          <RandomRecipeMethod/>
         </div>
       </div>
     )
