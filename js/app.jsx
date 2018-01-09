@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Input from './components/inputcomponent.jsx';
 import RecipesList from './components/allrecipes.jsx';
 import RandomRecipeMethod from './components/randomrecipemethod.jsx';
+import Favourite from './components/favourite.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,9 +13,9 @@ class App extends React.Component {
       isData: false,
       data: [],
       text: '',
-      page: 1
+      page: 1,
+      list: [],
     };
-    // this.getData();
   }
   //fetch api
   getData = () => {
@@ -34,12 +35,16 @@ class App extends React.Component {
   }
 
 
-  //callback get
+  //callback get from input
   getState = (text, page) => {
     this.setState({
       text: text,
       page: page
      })
+  }
+  //callback get from Favourite
+  favourite = (list) => {
+    this.setState( {list:list} )
   }
 
   //next and prev page
@@ -75,10 +80,14 @@ class App extends React.Component {
             data={this.state.data}
             prev={this.prevPage}
             page={this.state.page}
-            next={this.nextPage}/>
+            next={this.nextPage}
+            list={this.state.list}
+            send={this.favourite}/>
         </div>
         <div className='randomSection'>
           <RandomRecipeMethod/>
+          <Favourite list={this.state.list}
+                     />
         </div>
       </div>
     )
