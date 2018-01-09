@@ -15,6 +15,7 @@ class App extends React.Component {
       text: '',
       page: 1,
       list: [],
+      oneItem: ''
     };
   }
   //fetch api
@@ -33,6 +34,20 @@ class App extends React.Component {
       })
     })
   }
+
+  onDelete = (single) => {
+    console.log(single);
+    let listCopy = this.state.list.filter(item => item !== single)
+    this.setState({
+     list: listCopy
+   });
+ };
+
+  getOneItem = (item) => {
+    this.setState( {oneItem:item} )
+  }
+
+
 
 
   //callback get from input
@@ -82,12 +97,21 @@ class App extends React.Component {
             page={this.state.page}
             next={this.nextPage}
             list={this.state.list}
-            send={this.favourite}/>
+            send={this.favourite}
+            onDelete={this.onDelete}
+            getOneItem={this.getOneItem}/>
         </div>
         <div className='randomSection'>
           <RandomRecipeMethod/>
-          <Favourite list={this.state.list}
-                     />
+        </div>
+        <div className='favouriteSection'>
+          <h3>favourite</h3>
+          <Favourite
+            list={this.state.list}
+            send={this.favourite}
+            onDelete={this.onDelete}
+            data={this.state.oneItem}
+            />
         </div>
       </div>
     )

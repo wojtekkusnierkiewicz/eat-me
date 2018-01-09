@@ -173,7 +173,6 @@ img {
     margin: 20px 20px;
     display: grid;
     button, h2, img {
-      align-self: center;
       justify-self: center;
       margin: 10px;
     }
@@ -197,6 +196,48 @@ img {
     }
   }
 }
+
+/// FAVOURITE DUPLI
+
+.favouriteSection {
+  margin: 10px 0;
+  grid-area: favourite;
+  background: lighten(gray, 20%);
+  display: grid;
+  align-content: start;
+  .favouriteRecipe {
+    background: lighten(gray, 30%);
+  }
+  .favouriteRecipe {
+    margin: 20px 20px;
+    display: grid;
+    button, h2, img {
+      justify-self: center;
+      margin: 10px;
+    }
+    h2 {
+      font-family: $font;
+      font-size: 20px;
+      color: $color;
+      text-align: center;
+    }
+    p {
+      margin: 10px;
+      text-align: center;
+      a {
+        margin: 10px;
+        text-decoration: none;
+        font-family: $font;
+        color: white;
+        font-weight: bolder;
+        padding: 10px 20px;
+      }
+    }
+  }
+}
+
+
+
  .appContainer {
    background-color: $color;
    width: 1200px;
@@ -208,5 +249,5 @@ img {
    grid-template-areas:
      ". . head head head ."
      ". . main . sidebar ."
-     ". . main . . ."
+     ". . main . favourite ."
  }

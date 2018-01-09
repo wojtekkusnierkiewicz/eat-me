@@ -7,7 +7,8 @@ class RecipesList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: this.props.list
+      list: this.props.list,
+      oneItem: '',
     };
   }
 
@@ -22,9 +23,31 @@ class RecipesList extends React.Component {
       this.props.next();
     }
   }
-  getState = (list) => {
-    this.setState({ list: list }, this.props.send(this.state.list))
+  getState = (list,oneItem) => {
+    this.setState({
+      list: list,
+      oneItem: oneItem,
+    }, this.props.send(this.state.list, this.state.oneItem))
   }
+
+  onAdd = (item) => {
+    let listCopy = this.state.list;
+    listCopy.push(item);
+    this.setState({
+      list: listCopy
+    }, () => {
+      this.props.send(this.state.list)
+    })
+  }
+ //  onDelete = (single) => {
+ //    console.log(single);
+ //    let listCopy = this.props.list.filter(item => item !== single)
+ //    this.setState({
+ //     list: listCopy
+ //   }, () => {
+ //     this.props.send(this.state.list)
+ //   });
+ // };
 
   render() {
     console.log(this.state.list);
@@ -44,7 +67,9 @@ class RecipesList extends React.Component {
                 key={value.href}
                 index={value.index}
                 list= {this.state.list}
-                send={this.getState}/>
+                send={this.getState}
+                onAdd={this.onAdd}
+                onDelete={this.props.onDelete}/>
             )
           })
         }
