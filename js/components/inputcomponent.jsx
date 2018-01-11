@@ -13,16 +13,17 @@ class Input extends React.Component {
   textChange = (event) => {
     this.setState({
       text: event.target.value,
-      page: 1
+      page: 1,
     }, () => {
       this.props.send(this.state.text, this.state.page)
     });
   }
 
-  // init api search on btn
+  // init api search on btn and clear favourite list
   request = (event) => {
     event.preventDefault();
     this.props.request();
+    this.setState({text:''})
   }
 
   render() {

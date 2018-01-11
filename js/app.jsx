@@ -12,154 +12,144 @@ class App extends React.Component {
     this.state = {
       isData: false,
       data: [],
-      text: '',
-      page: 1,
       list: [],
-      oneItem: ''
+      text: '',
+      page: 1
     };
   }
   //fetch api
   getData = () => {
-    fetch(`http://www.recipepuppy.com/api/?p=${this.state.page}&q=${this.state.text}`).then(response=>{
-      if(response&&response.ok){
+    fetch(`http://www.recipepuppy.com/api/?p=${this.state.page}&q=${this.state.text}`).then(response => {
+      if (response && response.ok) {
         return response.json();
       } else {
         console.log('err');
       }
-    }).then(data=>{
+    }).then(data => {
       console.log(data.results);
-      this.setState({
-        isData: true,
-        data: data.results
-      })
+      this.setState({isData: true, data: data.results})
     })
   }
 
-  onDelete = (single) => {
-    console.log(single);
-    let listCopy = this.state.list.filter(item => item !== single)
-    this.setState({
-     list: listCopy
-   });
- };
-
-  getOneItem = (item) => {
-    this.setState( {oneItem:item} )
-  }
-
-
-
-
   //callback get from input
   getState = (text, page) => {
-    this.setState({
-      text: text,
-      page: page
-     })
+    this.setState({text: text, page: page})
   }
-  //callback get from Favourite
+
+  //callback get from list
   favourite = (list) => {
-    this.setState( {list:list} )
+    this.setState({list: list})
   }
 
   //next and prev page
-
   nextPage = () => {
-    this.setState( {page: this.state.page + 1},
-    () => {
+    this.setState({
+      page: this.state.page + 1
+    }, () => {
       this.getData();
     })
   }
   prevPage = () => {
-    this.setState( {page: this.state.page - 1},
-    () => {
+    this.setState({
+      page: this.state.page - 1
+    }, () => {
       this.getData();
     })
   }
-  // hideMethod = () => {
-  //   this.setState({display:block})
-  // }
-  render() {
-    console.log(this.state.text);
-    console.log(this.state.data);
-    if (this.state.isData === true && this.state.data.length>=1) {
-    return (
 
-      <div className='appContainer'>
-        <Input
-          text={this.state.text}
-          send={this.getState}
-          request={this.getData}/>
-        <div className='mainSection'>
-          <RecipesList
-            data={this.state.data}
-            prev={this.prevPage}
-            page={this.state.page}
-            next={this.nextPage}
-            list={this.state.list}
-            send={this.favourite}
-            onDelete={this.onDelete}
-            getOneItem={this.getOneItem}/>
-        </div>
-        <div className='randomSection'>
-          <RandomRecipeMethod/>
-        </div>
-        <div className='favouriteSection'>
-          <h3>favourite</h3>
-          <Favourite
-            list={this.state.list}
-            send={this.favourite}
-            onDelete={this.onDelete}
-            data={this.state.oneItem}
-            />
-        </div>
-      </div>
-    )
-  } else if (this.state.isData === true && this.state.data.length===0){
-    return (
-      <div className='appContainer'>
-        <Input
-          text={this.state.text}
-          send={this.getState}
-          request={this.getData}
-        />
-        <div className='mainSection error'>
-          <h3>this is not a proper query, try again</h3>
-        </div>
-        <div className='randomSection'>
+  onDelete = (single) => {
+    let listCopy = this.state.list.filter(item => item !== single)
+    this.setState({list: listCopy})
+  };
+
+  render() {
+    const input = <Input
+      text={this.state.text}
+      send={this.getState}
+      request={this.getData}/>
+
+    if (this.state.isData === true && this.state.data.length >= 1) {
+      return (
+        <div className='appContainer'>
+          {input}
+          <div className='mainSection'>
+            <RecipesList
+              data={this.state.data}
+              page={this.state.page}
+              list={this.state.list}
+              prev={this.prevPage}
+              next={this.nextPage}
+              send={this.favourite} />
+          </div>
+          <div className='randomSection'>
             <RandomRecipeMethod/>
-        </div>
-      </div>
-    )
-  } else {
-    return (
-      <div className='appContainer'>
-        <Input
-          text={this.state.text}
-          send={this.getState}
-          request={this.getData}/>
-        <div className='mainSection about'>
-          <h4>App created in <span>React</span> using free API by<br/>  <span>Wojtek Kuśnierkiewicz</span></h4>
-          <div>
+          </div>
+          <div className='favouriteSection'>
+            <h3>favourite</h3>
             <ul>
-              <li> <img src="./images/git.svg"/><a href='https://github.com/wojtekkusnierkiewicz/' target='_blank'>GITHUB</a> </li>
-              <li> <img src="./images/gmail.png"/><a href='#'>wojtek.kusnierkiewicz@gmail.com</a> </li>
-              <li> <img src="./images/ln.png"/><a href='#'>LINKEDIN</a> </li>
+              {
+                this.state.list.map(value => {
+                  return (
+                    <Favourite
+                      data={value}
+                      key={value.href}
+                      send={this.favourite}
+                      onDelete={this.onDelete}/>
+                    )
+                })
+              }
             </ul>
           </div>
         </div>
-        <div className='randomSection'>
-          <RandomRecipeMethod/>
+      )
+    } else if (this.state.isData === true && this.state.data.length === 0) {
+      return (
+        <div className='appContainer'>
+          {input}
+          <div className='mainSection error'>
+            <h3>this is not a proper query, try again</h3>
+          </div>
+          <div className='randomSection'>
+            <RandomRecipeMethod/>
+          </div>
         </div>
-      </div>
-    )
-  }
+      )
+    } else {
+      return (
+        <div className='appContainer'>
+          {input}
+          <div className='mainSection about'>
+            <h4>App created in
+              <span>React</span>
+              using free API by<br/>
+              <span>Wojtek Kuśnierkiewicz</span>
+            </h4>
+            <div>
+              <ul>
+                <li>
+                  <img src="./images/git.svg"/>
+                  <a href='https://github.com/wojtekkusnierkiewicz/' target='_blank'>GITHUB</a>
+                </li>
+                <li>
+                  <img src="./images/gmail.png"/>
+                  <a href='#'>wojtek.kusnierkiewicz@gmail.com</a>
+                </li>
+                <li>
+                  <img src="./images/ln.png"/>
+                  <a href='#'>LINKEDIN</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className='randomSection'>
+            <RandomRecipeMethod/>
+          </div>
+        </div>
+      )
+    }
   }
 }
 
-document.addEventListener('DOMContentLoaded', function(){
-    ReactDOM.render(
-        <App/>,
-        document.getElementById('app')
-    );
+document.addEventListener('DOMContentLoaded', function() {
+  ReactDOM.render(<App/>, document.getElementById('app'));
 });
