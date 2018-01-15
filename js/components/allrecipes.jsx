@@ -27,8 +27,11 @@ class RecipesList extends React.Component {
   }
 
   onAdd = (item) => {
-    let listCopy = this.props.list;
-    listCopy.push(item);
+    let listCopy=this.props.list
+    if (listCopy.length<3) {
+      listCopy.push(item);
+    }
+    // listCopy.push(item);
     this.setState({
       list: listCopy
     }, () => {

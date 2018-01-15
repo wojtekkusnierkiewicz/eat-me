@@ -1,19 +1,14 @@
-// classlist
-// appContainer
-// inputComponent
-// recipeContainer
-// recipesBtns
-// recipeList
-// mainSection
-// randomSection
-// randomRecipe
+@import "partials/reset";
+@import "partials/mobile";
+
+
 $font: 'Encode Sans Expanded', sans-serif;
 $color: #18AFAF;
+$headerSize: 26px;
+$value: 2px;
 * {
-  margin: 0;
-  padding: 0;
-  border-radius: 5px;
   font-family: $font;
+  box-sizing: border-box;
 }
 img {
   width: 100px;
@@ -130,7 +125,7 @@ img {
       background: lighten(gray, 20%);
       list-style: none;
       display:grid;
-      grid: repeat(5, 300px) / 1fr 1fr;
+      grid: repeat(5, 350px) / 1fr 1fr;
       padding:10px 20px;
       li {
         background: lighten(gray, 30%);
@@ -155,6 +150,10 @@ img {
           text-decoration: none;
           color: $color;
           font-weight: bolder;
+        }
+        button {
+          display: block;
+          margin: 0 auto;
         }
       }
     }
@@ -205,21 +204,32 @@ img {
   background: lighten(gray, 20%);
   display: grid;
   align-content: start;
-  .favouriteRecipe {
-    background: lighten(gray, 30%);
+  h3{
+    font-family: $font;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: bolder;
+  }
+  ul{
+    list-style: none;
   }
   .favouriteRecipe {
+    background: lighten(gray, 30%);
     margin: 20px 20px;
     display: grid;
-    button, h2, img {
+    button, h2, h3, h4, img {
       justify-self: center;
       margin: 10px;
     }
-    h2 {
+    h2, h3, h4 {
       font-family: $font;
-      font-size: 20px;
       color: $color;
       text-align: center;
+    }
+    @for $i from 2 through 4 {
+      h#{$i} {font-size: $headerSize - ($value*$i)}
     }
     p {
       margin: 10px;
