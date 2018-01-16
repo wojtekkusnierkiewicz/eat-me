@@ -6,7 +6,7 @@ In order to view my project, you will need to download the "allow-control-allow-
 
 eat-me is my first app and I used React.js to built it. You can find there some awsome recipes from all over the world. All data was fetched from RecipePuppies API. App is fully responsive, you can toggle browser view to see.
 
-There are 4 sections you can use:
+There are 3 sections you can use:
 - searchbar - return list of recipes from given query
 - favourite - here you can save recipe which caught your attention, to use it later
 - randomsearch - return random recipe from whole database
