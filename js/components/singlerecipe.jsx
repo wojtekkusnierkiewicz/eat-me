@@ -20,7 +20,7 @@ const SingleRecipe = (props) => {
           image !== '')
           ? image
           : `./images/default-meal.jpeg`} alt='meal-photo'/>
-      <a href={data.href} target='_blank'>{data.title}</a>
+      <h2><a href={data.href} target='_blank'>{data.title}</a></h2>
       <p>
         Products to use: {data.ingredients}
       </p>

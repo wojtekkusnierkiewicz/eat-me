@@ -119,24 +119,23 @@ class App extends React.Component {
         <div className='appContainer'>
           {input}
           <div className='mainSection about'>
-            <h4>App created in
-              <span>React</span>
-              using free API by<br/>
-              <span>Wojtek Kuśnierkiewicz</span>
-            </h4>
+            <div>
+              <h4>App created in
+                <span>React</span>
+                using free API by<br/>
+                <span>Wojtek Kuśnierkiewicz</span>
+              </h4>
+            </div>
             <div>
               <ul>
                 <li>
-                  <img src="./images/git.svg"/>
-                  <a href='https://github.com/wojtekkusnierkiewicz/' target='_blank'>GITHUB</a>
+                  <a href='https://github.com/wojtekkusnierkiewicz/' target='_blank'><img src="./images/git.svg"/></a>
                 </li>
                 <li>
-                  <img src="./images/gmail.png"/>
-                  <a href='#'>wojtek.kusnierkiewicz@gmail.com</a>
+                  <a href='mailto:wojtek.wojtek.kusnierkiewicz@gmail.com'><img src="./images/gmail.png"/></a>
                 </li>
                 <li>
-                  <img src="./images/ln.png"/>
-                  <a href='#'>LINKEDIN</a>
+                  <a href='https://www.linkedin.com/in/kusnierkiewicz/'><img src="./images/ln.png"/></a>
                 </li>
               </ul>
             </div>
